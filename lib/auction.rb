@@ -38,4 +38,19 @@ class Auction
     @bidders.uniq
   end
 
+
+  def bidder_info
+    bidder_details_hash = Hash.new{|h, k| h[k] = { :budget => 0, :items => [] }  }
+
+    @items.each do |item|
+      item.bids.each_pair do |attendee, amount|
+        bidder_details_hash[attendee][:budget] = attendee.budget
+       if item.bids.keys.include?(attendee)
+        bidder_details_hash[attendee][:items] << item
+       end
+
+      end
+    end
+    p bidder_details_hash
+  end
 end
