@@ -14,4 +14,10 @@ class Auction
     @items.map(&:name)
   end
 
+  def unpopular_items
+    @items.select do |item|
+      item.bids == {}
+    end
+  end
+
 end
