@@ -1,9 +1,10 @@
 class Auction
 
-  attr_reader :items
+  attr_reader :items, :bidders
 
   def initialize
     @items = []
+    @bidders = []
   end
 
   def add_item(item)
@@ -26,6 +27,15 @@ class Auction
       max_bid_array << item.current_high_bid if item.current_high_bid != nil
     end
     max_bid_array.sum
+  end
+
+  def bidders
+    @items.each do |item|
+      item.bids.each_pair do |attendee, amount|
+      @bidders << attendee.name
+      end
+    end
+    @bidders.uniq
   end
 
 end
