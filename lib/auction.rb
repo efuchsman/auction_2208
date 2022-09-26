@@ -51,6 +51,11 @@ class Auction
 
       end
     end
-    p bidder_details_hash
+     bidder_details_hash
   end
+
+  def date
+    Date.today.strftime("%d/%m/%Y")
+  end
+
 end
